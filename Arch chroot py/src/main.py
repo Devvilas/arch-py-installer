@@ -36,8 +36,7 @@ def localization():
 def network_config():
     hostname = input("Enter the hostname: ")
     os.system("touch /etc/hostname")
-    os.system("echo" + hostname + " > /etc/hostname")
-    os.system("echo \n127.0.0.1    localhost\n::1      localhost\n127.0.1.1        " + hostname + " >> /etc/hosts")
+    os.system("echo " + hostname + " > /etc/hostname")
 
 
 def set_pass_root():
