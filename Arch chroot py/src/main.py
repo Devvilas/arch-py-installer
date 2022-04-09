@@ -23,17 +23,19 @@ def localization():
     os.system("locale-gen")
 
     lang_var = input("One question...\nWrite the line that you remove the #\nLine: ")
-
+    os.system("touch /etc/locale.conf")
     os.system("cat /etc/locale.conf >> LANG=" + lang_var)
     
 
     print("Now write the layout of the keyboard again to make it persistent...")
     layout = input("Layout: ")
+    os.system("touch /etc/vconsole.conf")
     os.system("cat /etc/vconsole.conf >> KEYMAP=" + layout)
 
 
 def network_config():
     hostname = input("Enter the hostname: ")
+    os.system("touch /etc/hostname")
     os.system("cat /etc/hostname >> " + hostname)
 
     os.system("cat /etc/hosts >> \n127.0.0.1    localhost\n::1      localhost\n127.0.1.1        " + hostname)
@@ -71,10 +73,35 @@ def users():
 def additional_packages():
     os.system("pacman -S dosfstools os-prober mtools network-manager-applet networkmanager wpa_supplicant wireless_tools dialog sudo nano xorg xorg-server")
     os.system("systemctl enable NetworkManager")
-    os.system("firefox neofetch")
+    os.system("pacman -S firefox neofetch")
     os.system("cat /etc/bash.bashrc >> neofetch")
 
-
+def interface():
+    os.system("clear")
+    choose = input("\n1. None: Does nothing\n2. i3-gaps\n3. KDE\n4. Gnome\n5. xfce4\nOption: ")
+    if choose == "1":
+        print("Please run now reboot")
+        os.system("exit")
+    if choose == "2":
+        os.system("pacman -S i3-gaps i3-status dmenu lightdm lightdm-gtk-greeter")
+        os.system("systemctl enable lightdm")
+        print("Please run now reboot")
+        os.system("exit")
+    if choose == "3":
+        os.system("pacman -S plasma")
+        os.system("systemctl enable sddm")
+        print("Please run now reboot")
+        os.system("exit")
+    if choose == "4":
+        os.system("pacman -S gnome gnome-extra")
+        os.system("systemctl enable gdm")
+        print("Please run now reboot")
+        os.system("exit")
+    if choose == "5":
+        os.system("pacman -S xfce4 xfce4-goodies lightdm lightdm-gtk-greeter")
+        os.system("systemctl enable lightdm")
+        print("Please run now reboot")
+        os.system("exit")
 def order():
     welcome()
     Time_zone()
