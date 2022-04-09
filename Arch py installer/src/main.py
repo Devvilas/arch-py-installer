@@ -155,3 +155,5 @@ def order():
     installing_base()
     fstab()
     finish_and_chroot()
+
+order()
