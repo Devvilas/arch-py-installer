@@ -109,5 +109,6 @@ def order():
     bootloader()
     users()
     additional_packages()
+    interface()
 
 order()
