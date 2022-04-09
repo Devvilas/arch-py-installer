@@ -24,20 +24,20 @@ def localization():
 
     lang_var = input("One question...\nWrite the line that you remove the #\nLine: ")
     os.system("touch /etc/locale.conf")
-    os.system("cat LANG=" + lang_var + " >> /etc/locale.conf")
+    os.system("echo LANG=" + lang_var + " > /etc/locale.conf")
     
 
     print("Now write the layout of the keyboard again to make it persistent...")
     layout = input("Layout: ")
     os.system("touch /etc/vconsole.conf")
-    os.system("cat KEYMAP=" + layout + " >> /etc/vconsole.conf")
+    os.system("echo KEYMAP=" + layout + " > /etc/vconsole.conf")
 
 
 def network_config():
     hostname = input("Enter the hostname: ")
     os.system("touch /etc/hostname")
-    os.system("cat " + hostname + " >> /etc/hostname")
-    os.system("cat \n127.0.0.1    localhost\n::1      localhost\n127.0.1.1        " + hostname + " >> /etc/hosts")
+    os.system("echo" + hostname + " > /etc/hostname")
+    os.system("echo \n127.0.0.1    localhost\n::1      localhost\n127.0.1.1        " + hostname + " >> /etc/hosts")
 
 
 def set_pass_root():
@@ -73,7 +73,7 @@ def additional_packages():
     os.system("pacman -S dosfstools os-prober mtools network-manager-applet networkmanager wpa_supplicant wireless_tools dialog sudo nano xorg xorg-server")
     os.system("systemctl enable NetworkManager")
     os.system("pacman -S firefox neofetch")
-    os.system("cat neofetch >> /etc/bash.bashrc")
+    os.system("echo neofetch >> /etc/bash.bashrc")
 
 def interface():
     os.system("clear")
