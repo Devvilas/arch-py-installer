@@ -144,6 +144,7 @@ def fstab():
 def finish_and_chroot():
     print("And its done!\nNow i will chroot you in and you can start configuration your own system!\nBut if you want help you can install the command git and do\n'git clone https://github.com/Devvilas/arch-chroot-py.git'")
     input("Press enter to chroot...")
+    os.system("mv -v /root/arch-py-installer/Arch\ chroot\ py/src/main.py /mnt/root")
     os.system("arch-chroot /mnt")
         
 

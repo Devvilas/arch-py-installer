@@ -84,3 +84,5 @@ def order():
     bootloader()
     users()
     additional_packages()
+
+order()
